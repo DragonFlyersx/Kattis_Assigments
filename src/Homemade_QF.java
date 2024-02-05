@@ -1,4 +1,4 @@
-import edu.princeton.cs.algs4.QuickFindUF;
+/*import edu.princeton.cs.algs4.QuickFindUF;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -81,3 +81,4 @@ public class Homemade_QF {
     }
 
 }
+*/

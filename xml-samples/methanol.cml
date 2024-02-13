@@ -1,0 +1,15 @@
+<molecule id="METHANOL">
+ <atomArray>
+  <stringArray builtin="id">a1 a2 a3 a4 a5 a6</stringArray>
+  <stringArray builtin="elementType">C O H H H H</stringArray>
+  <floatArray builtin="x3" units="pm">
+    -0.748 0.558 ...
+  </floatArray>
+  <floatArray builtin="y3" units="pm">
+    -0.015 0.420 ...
+  </floatArray>
+  <floatArray builtin="z3" units="pm">
+    0.024 -0.278 ...
+  </floatArray>
+ </atomArray>
+</molecule>

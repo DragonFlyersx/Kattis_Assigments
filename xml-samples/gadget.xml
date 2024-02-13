@@ -1,0 +1,13 @@
+<widget type="gadget">
+  <head size="medium"/>
+  <big><subwidget ref="gizmo"/></big>
+  <info>
+    <head>
+      <title>Description of gadget</title>
+    </head>
+    <body>
+      <h1>Gadget</h1>
+      A gadget contains a <big>big gizmo</big>
+    </body>
+  </info>
+</widget>

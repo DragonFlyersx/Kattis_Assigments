@@ -1,0 +1,13 @@
+<widget type="gadget" xmlns="http://www.widget.inc">
+  <head size="medium"/>
+  <big><subwidget ref="gizmo"/></big>
+  <info xmlns:xhtml="http://www.w3.org/TR/xhtml1">
+    <xhtml:head>
+      <xhtml:title>Description of gadget</xhtml:title>
+    </xhtml:head>
+    <xhtml:body>
+    <xhtml:h1>Gadget</xhtml:h1>
+      A gadget contains a big gizmo
+    </xhtml:body>
+  </info>
+</widget>

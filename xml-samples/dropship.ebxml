@@ -1,0 +1,15 @@
+<MultiPartyCollaboration name="DropShip">
+ <BusinessPartnerRole name="Customer">
+  <Performs initiatingRole='//binaryCollaboration[@name="Firm Order"]/
+                            InitiatingRole[@name="buyer"]' />
+ </BusinessPartnerRole>
+ <BusinessPartnerRole name="Retailer">
+  <Performs respondingRole='//binaryCollaboration[@name="Firm Order"]/
+                            RespondingRole[@name="seller"]' />
+  <Performs initiatingRole='//binaryCollaboration[...]/
+                            InitiatingRole[@name="buyer"]' />
+ </BusinessPartnerRole>
+ <BusinessPartnerRole name="DropShip Vendor">
+  ...
+ </BusinessPartnerRole>
+</MultiPartyCollaboration>

@@ -4,7 +4,7 @@ public class Howl_Stupid {
         Scanner s = new Scanner(System.in);
         String A = s.nextLine();
         System.out.print("AWH");
-        for(int i = 0; i < A.length()-3; i++){
+        for(int i = 0; i < A.length()-2; i++){
             System.out.print("0");
         }
     }

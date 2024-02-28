@@ -10,3 +10,6 @@ public class Grades {
         }
     }
 }
+
+
+// lav array brug . sort ? Måske dobbelt array eller arraylist?

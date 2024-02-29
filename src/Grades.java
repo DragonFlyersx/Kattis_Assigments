@@ -25,7 +25,8 @@ public class Grades {
         // Array sort with custom Comparing settings.
 
         Arrays.sort(AllStudents, Comparator
-                .comparing((Students student) -> student.grade)
+                .comparingInt((Students student) -> student.grade)
+                        .reversed()
                 .thenComparing(Students -> Students.name));
 
         //prints students
@@ -37,9 +38,37 @@ public class Grades {
 }
  class Students{
     String name;
-    String grade;
-    public Students(String name, String grade){
+    int grade;
+    public Students(String name, String grade) {
         this.name = name;
-        this.grade = grade;
+
+
+
+        switch (grade){
+            case "A":
+                this.grade = 350;
+                break;
+            case "B":
+                this.grade = 300;
+                break;
+            case "C":
+                this.grade = 250;
+                break;
+            case "D":
+                this.grade = 200;
+                break;
+            case "E":
+                this.grade = 150;
+                break;
+            case "FX":
+                this.grade = 100;
+                break;
+            case "F":
+                this.grade = 50;
+                break;
+
+
+
+        }
     }
 }

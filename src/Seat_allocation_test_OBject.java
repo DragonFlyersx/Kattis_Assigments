@@ -65,4 +65,3 @@ class Parti implements Comparable<Parti> {
     }
 }
 
-

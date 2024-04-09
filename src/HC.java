@@ -17,66 +17,89 @@ public class HC {
         search.BFS(startsearch);
     }
 }
+class edge{
+    int start;
+    int end;
+    int type; //
+    edge(int start, int end, int type){
+        this.start = start;
+        this.end = end;
+        this.type = type;
+    }
+    int gettype(){
+        return type;
+    }
+    int getstart(){
+        return start;
+    }
+    int getEnd(){
+        return end;
+    }
+    int getop(int a){ // this part has Nikolaj Ho from my study group helped with.
+        if(a == start) return end;
+        else return start;
+    }
+}
 
 class Graph {
-        int Vert;
-        LinkedList<Integer>[] Neighbors;
-        int[] colors;
+    int Vert;
+    LinkedList<edge>[] Neighbors;
+    int[] colors;
+    ArrayList<edge> edges;
 
-        Graph(int Vert) {
-            this.Vert = Vert;
-            Neighbors = new LinkedList[Vert];
-            colors = new int[Vert];
-            colors[0] = 1;
-            for (int i = 0; i < Vert; i++) {
-                Neighbors[i] = new LinkedList<>();
-            }
-        }
-
-        void addEdge(int Start, int end, int type) {
-             // for conflicting edge farve skal alternate. men hvid det er en harmonisk edge må den godt havde samme farver
-                if(colors[Start] == 1 && colors[end] == 0){
-                    colors[end] = 2;
-
-                } else if (colors[Start] == 2 && colors[end] == 0) {
-                    colors[end] = 1;
-                }
-
-
-
-                Neighbors[Start].add(end);
-
-
-
-        }
-
-        void BFS(int start) {
-            boolean[] visited = new boolean[Vert];
-            boolean not_harmonious = false;
-            LinkedList<Integer> queue = new LinkedList<>();
-
-            visited[start] = true;
-            queue.add(start);
-
-            while (!queue.isEmpty()) {
-                int current = queue.poll();
-                System.out.print(current + " " + " has the color " + colors[current] + "     ");
-
-                Iterator<Integer> iterator = Neighbors[current].listIterator();
-                while (iterator.hasNext()) {
-                    int neighbor = iterator.next();
-                    if (colors[current] == colors[neighbor]) { // hvis det er en harmonisk er dette rigtigt. hvis det er
-                      not_harmonious = true;
-                    }
-                    if (!visited[neighbor]) {
-                        visited[neighbor] = true;
-                        queue.add(neighbor);
-                    }
-                }
-            }
-          /*  if(not_harmonious){
-                System.out.println(0);
-            }else{ System.out.println(1);} */
+    Graph(int Vert) {
+        this.Vert = Vert;
+        Neighbors = new LinkedList[Vert];
+        colors = new int[Vert];
+        edges = new ArrayList<>();
+        for (int i = 0; i < Vert; i++) {
+            Neighbors[i] = new LinkedList<>();
         }
     }
-// Note til selv skal tjekke linked imellem om det er conflicting eller harmony
+
+    void addEdge(int Start, int end, int type) {
+        edge edge = new edge(Start, end, type);
+
+        Neighbors[Start].add(edge);
+        Neighbors[end].add(edge);
+    }
+
+    public Iterable<edge> Neighbors(int v) { // this part has Nikolaj Ho from my study group helped with.
+        return Neighbors[v];
+    }
+
+    void BFS(int start) {
+        boolean[] visited = new boolean[Vert];
+        int not_harmonious = 1;
+        LinkedList<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < Vert; i++) {
+            if (!visited[i]) {
+                colors[i] = 0;
+                queue.add(i);
+
+                while (!queue.isEmpty() && not_harmonious == 1) {
+                    int current = queue.poll();
+                    if (!visited[current]) {
+                        visited[current] = true;
+                        for (edge e : Neighbors(current)) {
+                            int next = e.getop(current);
+                            if (!visited[next]) { // Has been made after discussing with study group.
+                                if (e.gettype() == 1) colors[next] = (1 - colors[current]);
+                                else colors[next] = colors[current];
+                                queue.add(next);
+                            } else if ((e.gettype() == 0 && colors[next] != colors[current]) || (e.gettype() == 1 && colors[next] == colors[current])) {
+                                not_harmonious = 0;
+                                break;
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+        System.out.println(not_harmonious);
+    }
+}
